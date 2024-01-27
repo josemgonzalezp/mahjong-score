@@ -29,6 +29,7 @@ const InputPlayers = ({ handlePlayers }) => {
                 className="rounded-md font-serif border border-black"
                 value={players[0]}
                 onChange={(e) => handleChange(e.target.value, 0)}
+                onFocus={(e) => e.target.select()}
             />
             <label htmlFor="">Jugador 2:</label>
             <input
@@ -36,6 +37,7 @@ const InputPlayers = ({ handlePlayers }) => {
                 className="rounded-md font-serif border border-black"
                 value={players[1]}
                 onChange={(e) => handleChange(e.target.value, 1)}
+                onFocus={(e) => e.target.select()}
             />
             <label htmlFor="">Jugador 3:</label>
             <input
@@ -43,13 +45,15 @@ const InputPlayers = ({ handlePlayers }) => {
                 className="rounded-md font-serif border border-black"
                 value={players[2]}
                 onChange={(e) => handleChange(e.target.value, 2)}
+                onFocus={(e) => e.target.select()}
             />
-            <label htmlFor="">Jugador 3:</label>
+            <label htmlFor="">Jugador 4:</label>
             <input
                 type="text"
                 className="rounded-md font-serif border border-black"
                 value={players[3]}
                 onChange={(e) => handleChange(e.target.value, 3)}
+                onFocus={(e) => e.target.select()}
             />
             <button
                 className="border-2 rounded-md p-4 bg-green-400 font-bold text-white"

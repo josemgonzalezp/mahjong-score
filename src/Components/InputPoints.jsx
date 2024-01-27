@@ -21,6 +21,7 @@ const InputPoints = ({ handleInputPoints }) => {
                 value={points}
                 type="number"
                 className="rounded-md text-center font-serif border border-black"
+                onFocus={(e) => e.target.select}
             />
             <PointsTable handleTableChange={handleTableChange} />
             <button
