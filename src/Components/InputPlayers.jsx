@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 
 const InputPlayers = ({ handlePlayers }) => {
-    const [players, setPlayers] = useState([
-        "player1",
-        "player2",
-        "player3",
-        "player4",
-    ]);
+    const [players, setPlayers] = useState(["", "", "", ""]);
     const handleSubmit = () => {
         handlePlayers(players);
     };
@@ -22,41 +17,40 @@ const InputPlayers = ({ handlePlayers }) => {
     };
     return (
         <div className="flex flex-col gap-4">
-            <h1>Ingrese Jugadores</h1>
-            <label htmlFor="">Jugador 1:</label>
             <input
+                placeholder="Jugador 1"
                 type="text"
-                className="rounded-md font-serif border border-black"
+                className="rounded-md p-2 outline-none"
                 value={players[0]}
                 onChange={(e) => handleChange(e.target.value, 0)}
                 onFocus={(e) => e.target.select()}
             />
-            <label htmlFor="">Jugador 2:</label>
             <input
+                placeholder="Jugador 2"
                 type="text"
-                className="rounded-md font-serif border border-black"
+                className="rounded-md p-2 outline-none"
                 value={players[1]}
                 onChange={(e) => handleChange(e.target.value, 1)}
                 onFocus={(e) => e.target.select()}
             />
-            <label htmlFor="">Jugador 3:</label>
             <input
+                placeholder="Jugador 3"
                 type="text"
-                className="rounded-md font-serif border border-black"
+                className="rounded-md p-2 outline-none"
                 value={players[2]}
                 onChange={(e) => handleChange(e.target.value, 2)}
                 onFocus={(e) => e.target.select()}
             />
-            <label htmlFor="">Jugador 4:</label>
             <input
+                placeholder="Jugador 4"
                 type="text"
-                className="rounded-md font-serif border border-black"
+                className="rounded-md p-2 outline-none"
                 value={players[3]}
                 onChange={(e) => handleChange(e.target.value, 3)}
                 onFocus={(e) => e.target.select()}
             />
             <button
-                className="border-2 rounded-md p-4 bg-green-400 font-bold text-white"
+                className="rounded-md p-4 bg-blue-500 font-bold text-white text-xl"
                 onClick={handleSubmit}
             >
                 Siguiente

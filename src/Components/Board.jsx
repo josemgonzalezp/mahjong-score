@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from "react";
 import InputPoints from "./InputPoints";
 
-const initialGameScore = Array.from({ length: 4 }, () =>
-    Array.from({ length: 4 }, () => 0)
-);
-
-const Board = ({ players }) => {
+const Board = ({ players, gameScore, handleInputPoints }) => {
     const [cellEditing, setCellEditing] = useState("");
-    const [gameScore, setGameScore] = useState(initialGameScore);
 
     const getTotalPoints = (player) => {
         let totalPoints = 0;
@@ -19,29 +14,16 @@ const Board = ({ players }) => {
         return totalPoints;
     };
 
-    const handleInputPoints = (points) => {
-        if (points === "" || points === undefined) points = 0;
-
-        const rowToEdit = parseInt(cellEditing.split("_")[0]);
-        const cellToEdit = parseInt(cellEditing.split("_")[1]);
-        const newScore = gameScore.map((row, rowIndex) => {
-            return row.map((cell, cellIndex) => {
-                if (cellIndex === cellToEdit && rowIndex === rowToEdit) {
-                    return parseInt(points);
-                } else {
-                    return cell;
-                }
-            });
-        });
-        setGameScore(newScore);
+    const handleInput = (points) => {
+        handleInputPoints(points, cellEditing);
         setCellEditing("");
     };
 
     return (
-        <div className="grid gap-4">
-            <table className="w-full rounded-md">
+        <div className="grid gap-4 mt-8">
+            <table className="w-full rounded-md h-72">
                 <thead>
-                    <tr className="h-20">
+                    <tr className="font-bold">
                         <th
                             className="border border-black"
                             style={{ width: "25%" }}
@@ -119,16 +101,8 @@ const Board = ({ players }) => {
                 </tbody>
             </table>
             {cellEditing != "" && (
-                <InputPoints handleInputPoints={handleInputPoints} />
+                <InputPoints handleInputPoints={handleInput} />
             )}
-            <button
-                onClick={() => {
-                    window.location.reload();
-                }}
-                className="border-2 rounded-md p-4 bg-red-500 font-bold text-white"
-            >
-                Reiniciar
-            </button>
         </div>
     );
 };
