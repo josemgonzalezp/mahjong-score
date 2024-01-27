@@ -25,7 +25,7 @@ const InputPoints = ({ handleInputPoints }) => {
             <PointsTable handleTableChange={handleTableChange} />
             <button
                 onClick={handleClick}
-                className="border-2 border-green-300 rounded-md px-2 bg-green-200"
+                className="border-2 rounded-md p-4 bg-green-400 font-bold text-white"
             >
                 Ingresar
             </button>

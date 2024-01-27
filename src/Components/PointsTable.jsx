@@ -26,7 +26,9 @@ const PointsTable = ({ handleTableChange }) => {
 
     return (
         <div className="flex flex-col gap-4">
-            <label htmlFor="">Dobles: {doubles === 0 ? "X3" : doubles}</label>
+            <label htmlFor="">
+                Dobles: <b>{doubles === 0 ? "X3" : doubles}</b>
+            </label>
             <input
                 type="range"
                 min="0"
@@ -35,7 +37,9 @@ const PointsTable = ({ handleTableChange }) => {
                 value={doubles}
                 onChange={(e) => handleChange(base, e.target.value)}
             />
-            <label htmlFor="">Base: {22 + base * 2}</label>
+            <label htmlFor="">
+                Base: <b>{22 + base * 2}</b>
+            </label>
             <input
                 type="range"
                 min="0"

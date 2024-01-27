@@ -9,18 +9,17 @@ const Board = ({ players }) => {
     const [cellEditing, setCellEditing] = useState("");
     const [gameScore, setGameScore] = useState(initialGameScore);
 
-    useEffect(() => {
-        let totalPoints = Array.from({ length: 4 }, () => 0);
+    const getTotalPoints = (player) => {
+        let totalPoints = 0;
+
         for (let i = 0; i < gameScore.length; i++) {
-            totalPoints[0] += gameScore[i][0];
-            totalPoints[1] += gameScore[i][1];
-            totalPoints[2] += gameScore[i][2];
-            totalPoints[3] += gameScore[i][3];
+            totalPoints += gameScore[i][player];
         }
-    }, [gameScore]);
+
+        return totalPoints;
+    };
 
     const handleInputPoints = (points) => {
-        console.log(points);
         if (points === "" || points === undefined) points = 0;
 
         const rowToEdit = parseInt(cellEditing.split("_")[0]);
@@ -34,7 +33,6 @@ const Board = ({ players }) => {
                 }
             });
         });
-        console.log(newScore);
         setGameScore(newScore);
         setCellEditing("");
     };
@@ -92,11 +90,45 @@ const Board = ({ players }) => {
                             </tr>
                         );
                     })}
+                    <tr key={`Totals`} className="h-20">
+                        <td
+                            className="border border-black text-center font-bold"
+                            key={`Totals_0`}
+                        >
+                            {getTotalPoints(0)}
+                        </td>
+                        <td
+                            className="border border-black text-center font-bold"
+                            key={`Totals_1`}
+                        >
+                            {getTotalPoints(1)}
+                        </td>
+                        <td
+                            className="border border-black text-center font-bold"
+                            key={`Totals_2`}
+                        >
+                            {getTotalPoints(2)}
+                        </td>
+                        <td
+                            className="border border-black text-center font-bold"
+                            key={`Totals_3`}
+                        >
+                            {getTotalPoints(3)}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             {cellEditing != "" && (
                 <InputPoints handleInputPoints={handleInputPoints} />
             )}
+            <button
+                onClick={() => {
+                    window.location.reload();
+                }}
+                className="border-2 rounded-md p-4 bg-red-500 font-bold text-white"
+            >
+                Reiniciar
+            </button>
         </div>
     );
 };
